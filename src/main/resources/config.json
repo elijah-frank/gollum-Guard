@@ -1,0 +1,24 @@
+{
+  "keyItem": "minecraft:stick",
+  "requireCustomName": true,
+  "allowIronGolems": true,
+  "allowSnowGolems": true,
+  "attackAllHostileMobs": true,
+  "attackPlayers": true,
+  "attackRange": 16.0,
+  "tickRate": 20,
+  "cooldownMs": 500,
+  "checkBundles": true,
+  "checkShulkerBoxes": false,
+  "messages": {
+    "golemHired": "§aGolem hired with key %key%.",
+    "golemAlreadyHired": "§6Golem already hired .",
+    "golemBelongsToOther": "§6This golem is already hired.",
+    "instructionMessage": "§7Right-click with a renamed %item% to hire this golem.",
+    "noKeyItem": "§cYou need a renamed %item% to hire golems.",
+    "ironGolemDisabled": "§cIron golems cannot be hired.",
+    "snowGolemDisabled": "§cSnow golems cannot be hired.",
+    "requiresCustomName": "§cThe %item% needs a custom name to hire golems."
+  },
+  "enableDebugLogging": false
+} 

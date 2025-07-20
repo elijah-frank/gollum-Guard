@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "golem-guard",
+  "version": "${version}",
+  "name": "Golem Guard",
+  "description": "Hire Iron/Snow Golems as guards with configurable key items. Server-side mod that works without client installation.",
+  "authors": [
+    "OG_MO-cow"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "guard.my.stuff.guardmystuff.GolemGuardMod"
+      }
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "fabric-api": "*",
+    "minecraft": "1.21.7",
+    "java": ">=21",
+    "fabric-language-kotlin": ">=1.13.4+kotlin.2.2.0"
+  },
+  "suggests": {},
+  "custom": {
+    "modmenu": {
+
+    }
+  }
+} 
