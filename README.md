@@ -1,4 +1,4 @@
-# Gollum Guard
+# Golem Guard
 
 [![Fabric API](https://img.shields.io/badge/modloader-Fabric-1976d2?style=flat-square&logo=fabricmc&logoColor=white)](https://fabricmc.net/)  
 [![Minecraft](https://img.shields.io/badge/minecraft-1.21.7-brightgreen?style=flat-square)](https://minecraft.net/)  
@@ -6,7 +6,7 @@
 
 ## Introduction
 
-I developed **Gollum Guard** as a server-only Fabric mod for Minecraft 1.21.7/1.21.8 to let players hire Iron and Snow Golems as personal guards. No client-side installation is required—anyone can join vanilla and immediately wield their golems.
+I developed **Golem Guard** as a server-only Fabric mod for Minecraft 1.21.7/1.21.8 to let players hire Iron and Snow Golems as personal guards. No client-side installation is required—anyone can join vanilla and immediately wield their golems.
 
 I originally built this mod for my Minecraft server network, **BovisGL** (more info at [bovisgl.xyz](https://bovisgl.xyz)), because our Anarchy game mode has no griefing rules and I wanted a way for players to protect their stuff without burying everything underground.
 
@@ -26,9 +26,9 @@ I originally built this mod for my Minecraft server network, **BovisGL** (more i
 
 ## Installation
 
-1. Download the latest `gollum-guard.jar`
+1. Download the latest `golem-guard.jar`
 2. Ensure Fabric Loader 0.16.14+ and Fabric API 0.96.4+ are installed
-3. Place `gollum-guard.jar` (and Fabric API/Kotlin jars) into your server's `mods/` folder
+3. Place `golem-guard.jar` (and Fabric API/Kotlin jars) into your server's `mods/` folder
 4. Start the server—`config/golemguard.json` will be generated automatically
 
 ## Configuration

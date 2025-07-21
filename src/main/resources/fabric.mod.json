@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "gollum-guard",
+  "id": "golem-guard",
   "version": "${version}",
-  "name": "Gollum Guard",
+  "name": "Golem Guard",
   "description": "Hire Iron/Snow Golems as guards with configurable key items. Server-side mod that works without client installation.",
   "authors": [
     "BovisGL Community"
@@ -17,7 +17,7 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "gollum.guard.GolemGuardMod"
+        "value": "golem.guard.GolemGuardMod"
       }
     ]
   },

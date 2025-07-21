@@ -27,7 +27,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"gollum-guard" {
+		"golem-guard" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

@@ -1,4 +1,4 @@
-package gollum.guard
+package golem.guard
 
 import net.fabricmc.fabric.api.event.player.UseEntityCallback
 import net.minecraft.entity.passive.IronGolemEntity
