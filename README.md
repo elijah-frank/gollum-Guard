@@ -14,8 +14,8 @@ I originally built this mod for my Minecraft server network, **BovisGL** (more i
 
 - **Key-Based Hiring**  
   Right-click an Iron or Snow Golem with a renamed key item to convert it into your guard.
-- 
-**Authorization & Sharing**  
+
+- **Authorization & Sharing**  
   Any player who has the correct key item with the matching name in their inventory will be ignored by your golems and not attacked. Share keys to let others be recognized as friendly.
 
 - **Configurable Targeting**  
@@ -26,10 +26,10 @@ I originally built this mod for my Minecraft server network, **BovisGL** (more i
 
 ## Installation
 
-1. Download the latest `golem-guard.jar`.  
-2. Ensure Fabric Loader 0.16.14+ and Fabric API 0.96.4+ are installed.  
-3. Place `golem-guard.jar` (and Fabric API/Kotlin jars) into your server’s `mods/` folder.  
-4. Start the server—`config/golemguard.json` will be generated automatically.
+1. Download the latest `gollum-guard.jar`
+2. Ensure Fabric Loader 0.16.14+ and Fabric API 0.96.4+ are installed
+3. Place `gollum-guard.jar` (and Fabric API/Kotlin jars) into your server's `mods/` folder
+4. Start the server—`config/golemguard.json` will be generated automatically
 
 ## Configuration
 
@@ -59,7 +59,8 @@ Open `config/golemguard.json` and adjust values as needed:
     "requiresCustomName": "§cThe %item% needs a custom name to hire golems."
   },
   "enableDebugLogging": false
-} 
+}
+```
 
 ## License
 
