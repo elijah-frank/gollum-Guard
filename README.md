@@ -13,16 +13,27 @@ I originally built this mod for my Minecraft server network, **BovisGL** (more i
 ## Features
 
 - **Key-Based Hiring**  
-  Right-click an Iron or Snow Golem with a renamed key item to convert it into your guard.
+  Right-click any supported golem with a renamed key item to hire them. Key items are reusable and remain in your inventory.
+
+- **Multi-Golem Support**  
+  Hire Iron Golems, Snow Golems, Guardians, and Elder Guardians as your personal guards.
 
 - **Authorization & Sharing**  
-  Any player who has the correct key item with the matching name in their inventory will be ignored by your golems and not attacked. Share keys to let others be recognized as friendly.
+  Any player with the correct key item will be ignored by your guards. Share keys to grant friendly access.
 
-- **Configurable Targeting**  
-  Guards attack hostile mobs and any players who do not have the key in their inventory. All targeting options are adjustable via JSON.
+- **Smart Combat AI**  
+  - **Snow Golems**: Automatically switch targets when line-of-sight is blocked by terrain
+  - **Guardians**: Use beam attacks from water with extended range instead of swimming to targets
+  - **Iron Golems**: Enhanced pathfinding and targeting persistence
 
-- **Performance-Focused**  
-  Adjustable tick rates and detection ranges keep server load minimal.
+- **Fire Snowballs**  
+  Snowballs passing through fire/lava set targets ablaze. Soul fire sources create soul fire blocks for extra damage.
+
+- **Configurable Everything**  
+  Attack ranges, target types, key items, messages, and performance settings fully customizable via JSON.
+
+- **Performance Optimized**  
+  Efficient line-of-sight checking, reduced tick rates, and smart targeting to minimize server impact.
 
 ## Installation
 
@@ -41,6 +52,8 @@ Open `config/golemguard.json` and adjust values as needed:
   "requireCustomName": true,
   "allowIronGolems": true,
   "allowSnowGolems": true,
+  "allowGuardians": true,
+  "allowElderGuardians": true,
   "attackAllHostileMobs": true,
   "attackPlayers": true,
   "attackRange": 16.0,
@@ -48,14 +61,16 @@ Open `config/golemguard.json` and adjust values as needed:
   "cooldownMs": 500,
   "checkBundles": true,
   "checkShulkerBoxes": false,
+  "defaultKeyName": "DefaultKey",
   "messages": {
     "golemHired": "§aGolem hired with key %key%.",
-    "golemAlreadyHired": "§6Golem already hired .",
-    "golemBelongsToOther": "§6This golem is already hired.",
+    "golemAlreadyHired": "§6Golem already hired.",
     "instructionMessage": "§7Right-click with a renamed %item% to hire this golem.",
     "noKeyItem": "§cYou need a renamed %item% to hire golems.",
     "ironGolemDisabled": "§cIron golems cannot be hired.",
     "snowGolemDisabled": "§cSnow golems cannot be hired.",
+    "guardianDisabled": "§cGuardians cannot be hired.",
+    "elderGuardianDisabled": "§cElder guardians cannot be hired.",
     "requiresCustomName": "§cThe %item% needs a custom name to hire golems."
   },
   "enableDebugLogging": false

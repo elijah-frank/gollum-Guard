@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "golem.guard.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "SnowballEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+} 

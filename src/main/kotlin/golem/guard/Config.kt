@@ -19,6 +19,8 @@ data class ConfigData(
     val requireCustomName: Boolean = true,
     val allowIronGolems: Boolean = true,
     val allowSnowGolems: Boolean = true,
+    val allowGuardians: Boolean = true,
+    val allowElderGuardians: Boolean = true,
     val attackAllHostileMobs: Boolean = true,
     val attackPlayers: Boolean = true,
     val attackRange: Double = 16.0,
@@ -26,6 +28,7 @@ data class ConfigData(
     val cooldownMs: Long = 500,
     val checkBundles: Boolean = true,
     val checkShulkerBoxes: Boolean = false,
+    val defaultKeyName: String = "DefaultKey",
     val messages: MessageConfig = MessageConfig(),
     val enableDebugLogging: Boolean = false
 )
@@ -35,12 +38,13 @@ data class ConfigData(
  */
 data class MessageConfig(
     val golemHired: String = "§aGolem hired with key %key%.",
-    val golemAlreadyHired: String = "§6Golem already hired as %key%.",
-    val golemBelongsToOther: String = "§6This golem is already hired.",
+    val golemAlreadyHired: String = "§6Golem already hired.",
     val instructionMessage: String = "§7Right-click with a renamed %item% to hire this golem.",
     val noKeyItem: String = "§cYou need a renamed %item% to hire golems.",
     val ironGolemDisabled: String = "§cIron golems cannot be hired.",
     val snowGolemDisabled: String = "§cSnow golems cannot be hired.",
+    val guardianDisabled: String = "§cGuardians cannot be hired.",
+    val elderGuardianDisabled: String = "§cElder guardians cannot be hired.",
     val requiresCustomName: String = "§cThe %item% needs a custom name to hire golems."
 )
 
@@ -51,6 +55,8 @@ object Config {
     var requireCustomName = true
     var allowIronGolems = true
     var allowSnowGolems = true
+    var allowGuardians = true
+    var allowElderGuardians = true
     var attackAllHostileMobs = true
     var attackPlayers = true
     var attackRange = 16.0
@@ -58,6 +64,7 @@ object Config {
     var cooldownMs = 500L
     var checkBundles = true
     var checkShulkerBoxes = false
+    var defaultKeyName = "DefaultKey"
     var messages = MessageConfig()
     var enableDebugLogging = false
 
@@ -102,6 +109,8 @@ object Config {
         requireCustomName = configData.requireCustomName
         allowIronGolems = configData.allowIronGolems
         allowSnowGolems = configData.allowSnowGolems
+        allowGuardians = configData.allowGuardians
+        allowElderGuardians = configData.allowElderGuardians
         attackAllHostileMobs = configData.attackAllHostileMobs
         attackPlayers = configData.attackPlayers
         attackRange = configData.attackRange.coerceIn(1.0, 64.0)
@@ -109,6 +118,7 @@ object Config {
         cooldownMs = configData.cooldownMs.coerceIn(100L, 5000L)
         checkBundles = configData.checkBundles
         checkShulkerBoxes = configData.checkShulkerBoxes
+        defaultKeyName = configData.defaultKeyName
         messages = configData.messages
         enableDebugLogging = configData.enableDebugLogging
     }
@@ -119,6 +129,8 @@ object Config {
         logger.info("Require custom name: $requireCustomName")
         logger.info("Allow iron golems: $allowIronGolems")
         logger.info("Allow snow golems: $allowSnowGolems")
+        logger.info("Allow guardians: $allowGuardians")
+        logger.info("Allow elder guardians: $allowElderGuardians")
         logger.info("Attack all hostile mobs: $attackAllHostileMobs")
         logger.info("Attack players: $attackPlayers")
         logger.info("Attack range: ${attackRange} blocks")
@@ -159,11 +171,12 @@ object Config {
         val template = when (messageType) {
             "hired" -> messages.golemHired
             "alreadyHired" -> messages.golemAlreadyHired
-            "belongsToOther" -> messages.golemBelongsToOther
             "instruction" -> messages.instructionMessage
             "noKeyItem" -> messages.noKeyItem
             "ironDisabled" -> messages.ironGolemDisabled
             "snowDisabled" -> messages.snowGolemDisabled
+            "guardianDisabled" -> messages.guardianDisabled
+            "elderGuardianDisabled" -> messages.elderGuardianDisabled
             "requiresName" -> messages.requiresCustomName
             else -> messageType
         }
