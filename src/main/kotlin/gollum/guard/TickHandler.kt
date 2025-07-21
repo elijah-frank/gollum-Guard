@@ -1,4 +1,4 @@
-package guard.my.stuff.guardmystuff
+package gollum.guard
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.minecraft.entity.LivingEntity

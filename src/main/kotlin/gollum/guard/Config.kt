@@ -1,4 +1,4 @@
-package guard.my.stuff.guardmystuff
+package gollum.guard
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

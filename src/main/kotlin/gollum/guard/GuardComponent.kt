@@ -1,4 +1,4 @@
-package guard.my.stuff.guardmystuff
+package gollum.guard
 
 import net.minecraft.entity.LivingEntity
 import net.minecraft.nbt.NbtCompound

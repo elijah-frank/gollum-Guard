@@ -1,4 +1,4 @@
-package guard.my.stuff.guardmystuff
+package gollum.guard
 
 import net.fabricmc.fabric.api.event.player.UseEntityCallback
 import net.minecraft.entity.passive.IronGolemEntity
