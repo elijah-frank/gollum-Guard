@@ -3,12 +3,13 @@
 ## [Unreleased]
 
 ### Added
-- **Guardian and Elder Guardian Support**: Can now hire Guardians and Elder Guardians as guards
 - **Smart Snow Golem Targeting**: Snow golems automatically switch targets when line-of-sight is blocked by terrain
+- **Fire Snowball Effects**: Snowballs passing through fire or lava ignite targets, letting you create a proper artillery cannon with flaming snowballs
+- If you want a proper laser cannon, you can now trap Guardians and hire them as guards. 
+- **Guardian and Elder Guardian Support**: Can now hire Guardians and Elder Guardians as guards
 - **Enhanced Guardian Combat**: Guardians in water use beam attacks with extended range instead of swimming to targets
-- **Fire Snowball Effects**: Snowballs passing through fire/lava ignite targets; soul fire sources create soul fire blocks
+- **Extended Guardian Range**: Water-based Guardians get 1.5x attack range for both land and water targets, making them great guards for your underwater base or future themed bases
 - **Reusable Key Items**: Key items no longer consumed when hiring - remain in inventory for multiple uses
-- **Extended Guardian Range**: Water-based Guardians get 1.5x attack range for both land and water targets
 - **Line-of-Sight Checking**: Advanced raycast-based targeting for improved combat AI
 
 ### Improved

@@ -13,27 +13,24 @@ I originally built this mod for my Minecraft server network, **BovisGL** (more i
 ## Features
 
 - **Key-Based Hiring**  
-  Right-click any supported golem with a renamed key item to hire them. Key items are reusable and remain in your inventory.
+  Right-click any supported golem with a renamed key item to hire them. Keys are reusable and stay in your inventory.
 
-- **Multi-Golem Support**  
-  Hire Iron Golems, Snow Golems, Guardians, and Elder Guardians as your personal guards.
+- **Hire Multiple Golem Types**  
+  Recruit Iron Golems, Snow Golems, Guardians, and Elder Guardians as your personal guards.
 
-- **Authorization & Sharing**  
-  Any player with the correct key item will be ignored by your guards. Share keys to grant friendly access.
+- **Shareable Access**  
+  Anyone with the correct key item is recognized as friendly by your guards. Give keys to friends to let them pass safely.
 
-- **Smart Combat AI**  
-  - **Snow Golems**: Automatically switch targets when line-of-sight is blocked by terrain
-  - **Guardians**: Use beam attacks from water with extended range instead of swimming to targets
-  - **Iron Golems**: Enhanced pathfinding and targeting persistence
-
-- **Fire Snowballs**  
-  Snowballs passing through fire/lava set targets ablaze. Soul fire sources create soul fire blocks for extra damage.
+- **Advanced Combat AI**  
+  - **Snow Golems**: Switch targets if their view is blocked, and now their snowball mechanics closely match Bedrock Edition—snowballs passing through fire or lava will ignite targets. This lets you build real working snow golem cannons, just like in Bedrock, for creative base defenses.
+  - **Guardians & Elder Guardians**: Can be hired and trapped in tanks to defend your base with their laser beams. They now target both land and sea threats, so a trapped guardian will attack any enemy nearby, making it possible to create powerful laser defenses.
+  - **Iron Golems**: Improved pathfinding and persistent targeting for better protection.
 
 - **Configurable Everything**  
-  Attack ranges, target types, key items, messages, and performance settings fully customizable via JSON.
+  All settings—attack ranges, target types, key items, messages, and performance—are fully customizable via JSON.
 
 - **Performance Optimized**  
-  Efficient line-of-sight checking, reduced tick rates, and smart targeting to minimize server impact.
+  Efficient line-of-sight checks, reduced tick rates, and smart targeting to minimize server impact.
 
 ## Installation
 
