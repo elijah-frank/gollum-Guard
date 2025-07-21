@@ -24,11 +24,6 @@ object TickHandler {
         ServerTickEvents.END_SERVER_TICK.register { server ->
             tickCounter++
             
-            // Only process every X ticks based on config (performance optimization)
-            if (tickCounter % Config.tickRate != 0) {
-                return@register
-            }
-            
             server.worlds.forEach { world ->
                 world.iterateEntities().forEach { entity ->
                     // Check if this golem type is enabled
@@ -41,51 +36,54 @@ object TickHandler {
                     if (isValidGolem && entity is LivingEntity) {
                         val comp = GuardComponent.get(entity)
                         if (comp.isGuard) {
-                            // Ensure the golem stays persistent
-                            when (entity) {
-                                is IronGolemEntity -> entity.setPersistent()
-                                is SnowGolemEntity -> entity.setPersistent()
-                            }
-                            
-                            // Update last patrol time
-                            comp.lastPatrolTime = world.time
-                            
-                            // Check if current target is still valid (important for real-time key checks)
+                            // IMMEDIATE key validation check (every tick for real-time response)
                             val currentTarget = if (entity is IronGolemEntity) entity.target else if (entity is SnowGolemEntity) entity.target else null
                             if (currentTarget != null && !shouldAttack(currentTarget, comp)) {
-                                // Current target is no longer valid (e.g., player got the key), stop attacking
+                                // Current target is no longer valid (e.g., player got the key), stop attacking IMMEDIATELY
                                 if (entity is IronGolemEntity) {
                                     entity.target = null
                                 } else if (entity is SnowGolemEntity) {
                                     entity.target = null
                                 }
                                 if (Config.enableDebugLogging) {
-                                    logger.info("Guard golem '${comp.keyName}' stopped targeting ${currentTarget.name.string} (now whitelisted)")
+                                    logger.info("Guard golem '${comp.keyName}' stopped targeting ${currentTarget.name.string} (now has key)")
                                 }
                             }
                             
-                            // Find nearby entities to potentially target (only if not already targeting)
-                            if (currentTarget == null || !shouldAttack(currentTarget, comp)) {
-                                val nearbyEntities = world.getOtherEntities(entity, entity.boundingBox.expand(Config.attackRange)) { 
-                                    it is LivingEntity && it != entity 
+                            // Only process other AI logic every X ticks based on config (performance optimization)
+                            if (tickCounter % Config.tickRate == 0) {
+                                // Ensure the golem stays persistent
+                                when (entity) {
+                                    is IronGolemEntity -> entity.setPersistent()
+                                    is SnowGolemEntity -> entity.setPersistent()
                                 }
                                 
-                                // Find the closest valid target
-                                val target = nearbyEntities
-                                    .filterIsInstance<LivingEntity>()
-                                    .filter { shouldAttack(it, comp) }
-                                    .minByOrNull { it.squaredDistanceTo(entity) }
+                                // Update last patrol time
+                                comp.lastPatrolTime = world.time
                                 
-                                target?.let { 
-                                    // Set the target for the golem to attack
-                                    if (entity is IronGolemEntity) {
-                                        entity.target = it
-                                    } else if (entity is SnowGolemEntity) {
-                                        entity.target = it
+                                // Find nearby entities to potentially target (only if not already targeting)
+                                if (currentTarget == null) {
+                                    val nearbyEntities = world.getOtherEntities(entity, entity.boundingBox.expand(Config.attackRange)) { 
+                                        it is LivingEntity && it != entity 
                                     }
                                     
-                                    if (Config.enableDebugLogging) {
-                                        logger.info("Guard golem '${comp.keyName}' targeting ${it.name.string}")
+                                    // Find the closest valid target
+                                    val target = nearbyEntities
+                                        .filterIsInstance<LivingEntity>()
+                                        .filter { shouldAttack(it, comp) }
+                                        .minByOrNull { it.squaredDistanceTo(entity) }
+                                    
+                                    target?.let { 
+                                        // Set the target for the golem to attack
+                                        if (entity is IronGolemEntity) {
+                                            entity.target = it
+                                        } else if (entity is SnowGolemEntity) {
+                                            entity.target = it
+                                        }
+                                        
+                                        if (Config.enableDebugLogging) {
+                                            logger.info("Guard golem '${comp.keyName}' targeting ${it.name.string}")
+                                        }
                                     }
                                 }
                             }
@@ -208,7 +206,18 @@ object TickHandler {
      */
     private fun isValidKeyStack(stack: ItemStack, keyName: String): Boolean {
         if (stack.item != Config.keyItem) return false
-        if (stack.getCustomName() == null) return false
-        return stack.getCustomName()!!.string == keyName
+        
+        // Handle the case where custom names are not required
+        val itemKeyName = if (Config.requireCustomName) {
+            // Must have custom name
+            if (stack.getCustomName() == null) return false
+            stack.getCustomName()!!.string
+        } else {
+            // Can have custom name or use default
+            stack.getCustomName()?.string ?: "DefaultKey"
+        }
+        
+        return itemKeyName == keyName
     }
+} 
 } 
